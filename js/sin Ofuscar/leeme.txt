@@ -1,0 +1,11 @@
+Vars_globals.js		-- Inicializa Variables
+MainJquery.js		-- Jquery funciones (Efectos de visibilidad, combo, filtro y Gráfica)
+Style.js			-- Función que devuelve el Color
+Layers.js			-- Definición y llamado de layers
+MainMap.js			-- inicializa el mapa
+StyleOverlay.js		-- Estilo Overlay
+DisplayFeature.js	-- Tooltip (MOUSE ENCIMA) - Evento click despliega información del feature
+DisplayLayer.js		-- Muestra el layer en funcion de la resolución
+
+
+http://www.javascriptobfuscator.com/Javascript-Obfuscator.aspx

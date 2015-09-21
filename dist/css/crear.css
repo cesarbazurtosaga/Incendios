@@ -1,0 +1,12 @@
+
+.colorgraph {
+  height: 5px;
+  border-top: 0;
+  background: #33aacc;
+  border-radius: 5px;
+  background-image: -webkit-linear-gradient(left, #33aacc, #33aacc 12.5%, #33aacc 12.5%, #33aacc 25%, #33aacc 25%, #33aacc 37.5%,  #33aacc 50%, #fdf100 50%, #fdf100 62.5%, #fdf100 62.5%, #fdf100 75%, #ed1b24 75%, #ed1b24 87.5%, #ed1b24 87.5%, #ed1b24);
+  background-image: -moz-linear-gradient(left, #33aacc, #33aacc 12.5%, #33aacc 12.5%, #33aacc 25%, #33aacc 25%, #33aacc 37.5%,  #33aacc 50%, #fdf100 50%, #fdf100 62.5%, #fdf100 62.5%, #fdf100 75%, #ed1b24 75%, #ed1b24 87.5%, #ed1b24 87.5%, #ed1b24);
+  background-image: -o-linear-gradient(left, #33aacc, #33aacc 12.5%, #33aacc 12.5%, #33aacc 25%, #33aacc 25%, #33aacc 37.5%,  #33aacc 50%,  #fdf100 50%,  #fdf100 62.5%, #fdf100 62.5%, #fdf100 75%, #ed1b24 75%, #ed1b24 87.5%, #ed1b24 87.5%, #ed1b24);
+  background-image: linear-gradient(to right, #33aacc, #33aacc 12.5%, #33aacc 12.5%, #33aacc 25%, #33aacc 25%, #33aacc 37.5%, #33aacc 50%,  #fdf100 50%, #fdf100 62.5%, #fdf100 62.5%, #fdf100 75%, #ed1b24 75%, #ed1b24 87.5%, #ed1b24 87.5%, #ed1b24);
+
+}

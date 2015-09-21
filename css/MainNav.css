@@ -1,0 +1,48 @@
+
+.navbar-default {
+	background-color: #428bca;
+	border-color: #000000;
+
+}
+.navbar-header {
+	background-color: #428bca;
+	width: 100%;
+	
+}
+
+.navbar-toggle {
+border-color: #DDD;
+background-color: #FFF!important;
+}
+a {
+background-color: #ffffff;	
+color: #000;
+text-decoration: none;
+}
+
+.panel-heading {
+	padding: 8px 5px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0);
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
+
+img {
+	vertical-align: initial !important;
+}
+		
+.panel-body {
+	padding: 5px !important;
+}
+		
+#panel_leyenda { 
+	padding: 6px !important;
+}
+		
+.panel {
+	margin-bottom: 2px !important;
+}
+
+body{
+	height: 99.43% !important;	
+}

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <link rel="stylesheet" href="./functions/ol/ol.css" type="text/css">
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link type="image/png" href="../../../../geoportal/gis/resources/favicon.ico" rel="icon">
+    <link type="image/png" href="../../../../geoportal/gis/resources/favicon.ico" rel="shortcut icon">
+
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="./resources/layout.css" type="text/css">
+    <link rel="stylesheet" href="./resources/bootstrap/css/bootstrap-responsive.min.css" type="text/css">
+    <link rel="stylesheet" href="./functions/multiselect/css/bootstrap-multiselect.css" type="text/css">
+    <link rel="stylesheet" href="./functions/dialog/css/bootstrap-dialog.min.css" type="text/css">
+    <link rel="stylesheet" href="./css/sb-admin-2.css" type="text/css">
+    <link href="./functions/datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="./css/Main.css" type="text/css">
+
+    <link rel="stylesheet" href="./css/acordion.css" type="text/css">
+    <link href="./dist/css/crear.css" rel="stylesheet">
+    <!-- Page-Level Plugin CSS - Tables -->
+    <link href="./dist/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="./dist/css/cupertino/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="./functions/jslider/css/jslider.css" type="text/css">
+    <link rel="stylesheet" href="./functions/jslider/css/jslider.blue.css" type="text/css">
+    <link rel="stylesheet" href="./functions/jslider/css/jslider.plastic.css" type="text/css">
+    <link rel="stylesheet" href="./functions/jslider/css/jslider.round.css" type="text/css">
+    <link rel="stylesheet" href="./functions/jslider/css/jslider.round.plastic.css" type="text/css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="./css/MainNav.css" />
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    <script src="//code.jquery.com/jquery-1.11.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="./functions/Numeral-js-1.5.3-0/Numeral-js/min/numeral.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./functions/multiselect/js/bootstrap-multiselect.js"></script>
+    <script type="text/javascript" src="./functions/multiselect/js/prettify.js"></script>
+
+    <script type="text/javascript" src="./functions/jslider/js/jshashtable-2.1_src.js"></script>
+    <script type="text/javascript" src="./functions/jslider/js/jquery.numberformatter-1.2.3.js"></script>
+    <script type="text/javascript" src="./functions/jslider/js/tmpl.js"></script>
+    <script type="text/javascript" src="./functions/jslider/js/jquery.dependClass-0.1.js"></script>
+    <script type="text/javascript" src="./functions/jslider/js/draggable-0.1.js"></script>
+    <script type="text/javascript" src="./functions/jslider/js/jquery.slider.js"></script>
+    <script type="text/javascript" src="./functions/turf/turf.min.js"  charset="utf-8"></script>
+    <!--script type="text/javascript" src="../comparative/functions/moment/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="../comparative/js/socket.io.js"></script-->
+    <script src="./functions/datetimepicker/build/js/moment.min.js"></script>
+    <script src="./functions/datetimepicker/build/js/bootstrap-datetimepicker.es.js"></script>
+    <script src="./functions/datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+ 	<script src="./functions/waitingDialog/waitingDialog.js"></script>
+   
+    <title>Mapa de Incendios</title>
+</head>
+
+<body>
+    <div class="navbar-header">
+        <img src="img/logos_gobernacion.png" style="max-width: 320px;">
+        <div id="title" class="alert"></div>
+    </div>
+    <script src="./functions/Highcharts-4.0.1/js/highcharts.js"></script>
+    <script src="./functions/Highcharts-4.0.1/js/modules/exporting.js"></script>
+    <!--div class="modal"></div-->
+   
+        <div id="map"></div>
+        <div id="info2"></div>
+        <div id="popup" class="ol-popup">
+            <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+            <div id="popup-content"></div>
+        </div>
+   		<div id="panelFiltros" > 
+		    	<div class="panel panel-primary " id="PanelResumen" >
+		    		<div class="panel-body" style="max-width: 350px;"> 
+				     <div class="well">
+				     	
+					  	<h4 class="text-info"><span id="TextCuentaCasos">0</span> INCENDIOS </h4>
+						
+				     	<hr>
+				     	<div id="coberturaVegetal">
+					  	<h5 class="text-info"><small class="text-muted">Total Afectacion Cobertura:</small> <br>
+					  		<span id="TextTotalArea"></span>  ha2</h5>
+					  	</div>
+					  	<hr>
+						<h5 class="text-info"><small class="text-muted">Tiempo:</small> <br>
+					  		<span id="TextFechaini">2015-01-01</span> A
+					  		<span id="TextFechafin">2015-07-22</span> </h5>
+					  	<h5 class="text-info"><small class="text-muted">Escala:</small> <br>
+					  		<span id="TextEscalaMun">Municipal</span> </h5>
+						
+										  	
+					  </div> 
+					</div>
+				</div>
+				
+	    </div>
+
+        <div id="chartContainer" style="background-color: rgba(255, 255, 255, 0.5)"></div>
+        <div id="chartContainer1" style="background-color: rgba(255, 255, 255, 0.5)"></div>
+
+        <div id="leyenda">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h5 class="panel-title">
+		        			<a class="panel-title">Leyenda</a>
+			      		</h5>
+                </div>
+                <div id="panel_leyenda" class="panel-body" style="max-width: 300px;">
+                    <div class="well" style="max-height: 500px;overflow: auto;">
+                        <div id="items" class="divider"> </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="BtnMonstrarBusquedas">
+            <button type="button" class="btn btn-primary" id="MostrarBusquedas">
+                <span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span> Opciones
+            </button>
+        </div>
+        <div class="col-sm-2 col-md-2" id="panelBusquedas" style="width:200px;">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title" style="width:190px;">
+		            	<span class="glyphicon glyphicon-option-vertical" aria-hidden="true"></span> Opciones
+						<div class="pull-right " id="OcultarBusqueda">
+						  <span><i class="glyphicon glyphicon-remove"></i></span>
+						</div>
+					</h3>
+                </div>
+                <div class="panel-body">
+                    <p class="text-success" id="CantUsuarios"></p>
+
+                    <div role="tabpanel">
+                        <ul class="nav nav-tabs" role="tablist">
+                        	<li role="presentation" class="active">
+                                <a href="#espacio" aria-controls="messages" role="tab" data-toggle="tab">
+                                    <span class="glyphicon glyphicon-picture  text-primary" aria-hidden="true" id="espacioColor" data-toggle="tooltip" data-placement="top" title="Mapa"></span>
+                                </a>
+                            </li>
+                            <!--li role="presentation" >
+                                <a href="#eventos" aria-controls="home" role="tab" data-toggle="tab">
+                                    <span class="glyphicon glyphicon-list-alt" aria-hidden="true" id="eventosColor" data-toggle="tooltip" data-placement="top" title="Eventos"></span>
+                                </a>
+                            </li-->
+                            <li role="presentation">
+                                <a href="#tiempo" aria-controls="profile" role="tab" data-toggle="tab">
+                                    <span class="glyphicon glyphicon-time" aria-hidden="true" id="tiempoColor" data-toggle="tooltip" data-placement="top" title="Tiempo"></span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                        <div class="tab-content">
+                        	 <div role="tabpanel" class="tab-pane active" id="espacio">
+                                <center> <h5><b>ESPACIO</b></h5></center>
+                                <div class="form-group">
+                                    <label>Escala: </label>
+                                    <select id="layers" class="form-control">
+                                    	<option value="Vereda" >Vereda</option>
+                                        <option value="Municipio" selected>Municipio</option>
+                                        <option value="Provincia">Provincia</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--div role="tabpanel" class="tab-pane " id="eventos">
+                            	<center> <h5><b>EVENTOS</b></h5></center>
+                               
+                            </div-->
+                            <div role="tabpanel" class="tab-pane" id="tiempo">
+                                <center><h5><b>TIEMPO</b></h5></center>
+                                <div class="form-group">
+                                    <label>Fecha Inicio</label>
+                                    <div class='input-group date ' id='datetimepicker_ini'>
+                                        <input type="text" class="form-control" disabled />
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Fecha Fin</label>
+                                    <div class="input-group date" id="datetimepicker_fin">
+                                        <input type="text" class="form-control" disabled />
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-success  btn-block  btn-block" onclick="filtrar()">
+                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Buscar
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+     
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js" type="text/javascript"></script>	
+        <script src="./js/list-group-checked.js" type="text/javascript"></script>
+        <script src="./resources/example-behaviour.js" type="text/javascript"></script>
+        <script src="./js/Vars_globals.js" type="text/javascript"></script>
+        <script src="./js/MainJquery.js" type="text/javascript"></script>
+        <script src="./functions/ol/ol-debug.js" type="text/javascript"></script>
+        <script src="./js/Style.js" type="text/javascript"></script>
+        <script src="./js/Layers.js" type="text/javascript"></script>
+        <script src="./js/MainMap.js" type="text/javascript"></script>
+        <script src="./js/Legend.js" type="text/javascript"></script>
+        <script src="./js/StyleOverlay.js" type="text/javascript"></script>
+        <script src="./js/DisplayFeature.js" type="text/javascript"></script>
+        <script src="./js/DisplayLayer.js" type="text/javascript"></script>
+        <script src="./js/Pie.js" type="text/javascript"></script>
+        <!--script src="./js/comparative.js" type="text/javascript"></script-->
+</body>
+
+</html>
